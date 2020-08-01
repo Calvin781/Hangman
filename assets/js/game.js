@@ -2,12 +2,15 @@ let wordTab = [];
 let foundletters = [];
 
 async function getData() {
+
     const promise = await fetch('https://random-word-api.herokuapp.com/word')
     const word = await promise.json();
-    wordTab = word[0].split('');;
+    wordTab = word[0].split('');
+
 }
 
 async function startGame() {
+
     await getData();
     let game = new (Game);
     let keyboard = new Keyboard(game);
@@ -16,9 +19,11 @@ async function startGame() {
 
     game.updateLetters();
 
+
 }
 
 class Game {
+
     constructor() {
         this.life = 10;
         this.word = wordTab;
@@ -51,6 +56,8 @@ class Game {
 }
 
 startGame();
+
+
 
 
 

@@ -1,19 +1,21 @@
 let wordTab = [];
+let foundletters = [];
 
 async function getData() {
     const promise = await fetch('https://random-word-api.herokuapp.com/word')
     const word = await promise.json();
     wordTab = word[0].split('');;
-
-    console.log(wordTab);
 }
 
 async function startGame() {
     await getData();
     let game = new (Game);
+    let keyboard = new Keyboard(game);
+
     console.log(game.word);
 
-    game.displayLetters();
+    game.updateLetters();
+    console.log(foundletters);
 
 }
 
@@ -23,24 +25,36 @@ class Game {
         this.word = wordTab;
     }
 
-    displayLetters() {
-        wordTab.forEach(letter => {
+    updateLetters() {
+        $(".word").empty();
 
-            let target = document.getElementById("word");
-            let newSpan = document.createElement("span");
-            newSpan.innerHTML = letter
-            target.appendChild(newSpan);
-        })
+        if (foundletters.length != wordTab.length) {
+            wordTab.forEach(letter => {
 
+                foundletters.push("");
+                let target = document.getElementById("word");
+                let newSpan = document.createElement("span");
+                target.appendChild(newSpan);
+
+            })
+        } else {
+
+            foundletters.forEach(letter => {
+                let target = document.getElementById("word");
+                let newSpan = document.createElement("span");
+                newSpan.innerHTML = letter;
+
+                target.appendChild(newSpan);
+            })
+
+        }
     }
-
-    updateKeyboard() {
-
-    }
-
 }
 
 startGame();
+
+
+
 
 
 

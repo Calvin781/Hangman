@@ -1,5 +1,6 @@
 let wordTab = [];
 let foundletters = [];
+let usedLetter = [];
 
 async function getData() {
 

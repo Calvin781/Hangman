@@ -15,7 +15,6 @@ async function startGame() {
     console.log(game.word);
 
     game.updateLetters();
-    console.log(foundletters);
 
 }
 

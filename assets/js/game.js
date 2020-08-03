@@ -1,6 +1,12 @@
 let wordTab = [];
 let foundletters = [];
 let usedLetter = [];
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
+document.getElementById("restart").addEventListener("click", () => {
+location.reload();
+})
 
 async function getData() {
 
@@ -15,18 +21,55 @@ async function startGame() {
     await getData();
     let game = new (Game);
     let keyboard = new Keyboard(game);
-
-    console.log(game.word);
-
     game.updateLetters();
+    game.draw();
+
+}
+
+function getAllIndexOfLetter(array, letter) {
+
+    let letterIndex = [];
+
+    for (i = 0; i < array.length; i++) {
+        if (array[i] == letter) {
+            letterIndex.push(i);
+        }
+    }
+    return letterIndex;
+}
+
+function checkLetter(game, letterAttribute) {
+
+    if (wordTab.includes(letterAttribute) && game.life > 0) { // La lettre deviné est dans le mot.
+
+        document.querySelector(`.${letterAttribute}`).style.backgroundColor = "green";
+        let lettersIndex = getAllIndexOfLetter(wordTab, letterAttribute);
+        for (let i = 0; i < lettersIndex.length; i++) {
+            foundletters.splice(lettersIndex[i], 1, letterAttribute);
+        }
+
+        game.updateLetters();
+
+    }
+
+    if (!wordTab.includes(letterAttribute) && game.life > 0 && usedLetter.includes(letterAttribute) === false) {
+
+        usedLetter.push(letterAttribute);
+
+        document.querySelector(`.${letterAttribute}`).style.backgroundColor = "#600000";
+        game.life--;
+        game.draw();
 
 
+    } else {
+        // GAMEOVER
+    }
 }
 
 class Game {
 
     constructor() {
-        this.life = 10;
+        this.life = 6;
         this.word = wordTab;
     }
 
@@ -54,10 +97,13 @@ class Game {
 
         }
     }
+
+    draw(ctx) {
+        drawHangedman(this.life);
+    }
 }
 
 startGame();
-
 
 
 

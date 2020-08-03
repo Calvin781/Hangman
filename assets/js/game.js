@@ -5,7 +5,7 @@ let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 
 document.getElementById("restart").addEventListener("click", () => {
-location.reload();
+    location.reload();
 })
 
 async function getData() {
@@ -40,7 +40,7 @@ function getAllIndexOfLetter(array, letter) {
 
 function checkLetter(game, letterAttribute) {
 
-    if (wordTab.includes(letterAttribute) && game.life > 0) { // La lettre deviné est dans le mot.
+    if (wordTab.includes(letterAttribute) && game.life > 0 && !isWordFound()) { // La lettre deviné est dans le mot.
 
         document.querySelector(`.${letterAttribute}`).style.backgroundColor = "green";
         let lettersIndex = getAllIndexOfLetter(wordTab, letterAttribute);
@@ -50,9 +50,15 @@ function checkLetter(game, letterAttribute) {
 
         game.updateLetters();
 
+        if (isWordFound()) {
+            document.getElementById("restart").style.display = "block";
+            document.getElementById("hangedman").style.background = "rgb(71, 71, 71) url('https://thumbs.gfycat.com/AlarmingSereneGerenuk.webp') no-repeat center";
+            console.log('test');
+        }
+
     }
 
-    if (!wordTab.includes(letterAttribute) && game.life > 0 && usedLetter.includes(letterAttribute) === false) {
+    if (!wordTab.includes(letterAttribute) && game.life > 0 && usedLetter.includes(letterAttribute) === false && !isWordFound()) {
 
         usedLetter.push(letterAttribute);
 
@@ -61,9 +67,13 @@ function checkLetter(game, letterAttribute) {
         game.draw();
 
 
-    } else {
-        // GAMEOVER
     }
+}
+
+function isWordFound() {
+    if (wordTab.join('') == foundletters.join('')) {
+        return true
+    } else { return false }
 }
 
 class Game {

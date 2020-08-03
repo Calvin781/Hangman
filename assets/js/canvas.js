@@ -1,5 +1,6 @@
 function drawHangedman(life) {
 
+   
 
     ctx.fillStyle = "black";
     ctx.fillRect(0, 140, 150, 10);

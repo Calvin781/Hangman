@@ -4,11 +4,9 @@ let usedLetter = [];
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 
-document.getElementById("restart").addEventListener("click", () => {
-    location.reload();
-})
+document.getElementById("restart").addEventListener("click", () => location.reload());
 
-async function getData() {
+let getData = async () => {
 
     const promise = await fetch('https://random-word-api.herokuapp.com/word')
     const word = await promise.json();
@@ -16,7 +14,7 @@ async function getData() {
 
 }
 
-async function startGame() {
+let startGame = async () => {
 
     await getData();
     let game = new (Game);
@@ -26,7 +24,7 @@ async function startGame() {
 
 }
 
-function getAllIndexOfLetter(array, letter) {
+let getAllIndexOfLetter = (array, letter) => {
 
     let letterIndex = [];
 
@@ -38,7 +36,7 @@ function getAllIndexOfLetter(array, letter) {
     return letterIndex;
 }
 
-function checkLetter(game, letterAttribute) {
+let checkLetter = (game, letterAttribute) => {
 
     if (wordTab.includes(letterAttribute) && game.life > 0 && !isWordFound()) { // La lettre deviné est dans le mot.
 
@@ -52,7 +50,6 @@ function checkLetter(game, letterAttribute) {
 
         if (isWordFound()) {
             document.getElementById("restart").style.display = "block";
-            document.getElementById("hangedman").style.background = "rgb(71, 71, 71) url('https://thumbs.gfycat.com/AlarmingSereneGerenuk.webp') no-repeat center";
             console.log('test');
         }
 
@@ -70,7 +67,7 @@ function checkLetter(game, letterAttribute) {
     }
 }
 
-function isWordFound() {
+let isWordFound = () => {
     if (wordTab.join('') == foundletters.join('')) {
         return true
     } else { return false }

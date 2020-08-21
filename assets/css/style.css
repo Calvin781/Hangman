@@ -3,41 +3,45 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     font-family: "Bebas Neue", cursive;
-    padding: 2%;
-    padding-left: 7%;
 }
 
 button {
-    position: absolute;
-    margin-top: 2%;
+    margin-top: 10%;
     margin-left: 10%;
-    border: 5px solid  rgb(255, 255, 255);
-    background-color: rgb(71, 71, 71);
+    border: 5px solid rgb(243, 194, 120);
+    width: 100%;
+    background-color: rgb(0, 0, 0);
     font-family: "Bebas Neue", cursive;
     font-size: 3rem;
     color: blanchedalmond;
 }
 
 .game {
-    width: 1100px;
-    height: 440px;
-    border: 1px solid blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    height: 100%;
 }
 
 .hangman {
     display: flex;
-    width: 1090px;
-    height: 250px;
+    justify-content: center;
+    width: 75%;
+    height: 30vh;
     border: 5px solid blanchedalmond;
     background-color: rgb(71, 71, 71);
 }
 
 .hangedman {
+    display: flex;
+    flex-wrap: wrap;
     color: white;
     text-align: center;
-    width: 500px;
-    height: 250px;
+    width: 50%;
+    height: 30vh;
 }
 
 .hangedman img {
@@ -48,12 +52,13 @@ button {
 .word {
     display: flex;
     justify-content: space-evenly;
-    font-size: 3rem;
-    color: blanchedalmond;
-    width: 800px;
-    height: 250px;
     text-align: center;
-    padding-top: 6.5%;
+
+    font-size: 5vh;
+    color: blanchedalmond;
+    width: 80%;
+    height: 250px;
+    padding-top: 10%;
 }
 
 span {
@@ -63,25 +68,59 @@ span {
 }
 
 .keyboard {
-    width: 1100px;
-    height: 200x;
-    background-color: blanchedalmond;
+    padding-top: 3%;
     display: flex;
     flex-wrap: wrap;
+    width: 90%;
+    height: 100%;
+    background-color: #131313;
     justify-content: space-around;
 }
 
 .key--letter {
+    text-align: center;
     color: blanchedalmond;
-    font-size: 45px;
-    padding: 1.8rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border: blanchedalmond 1px solid;
+    font-size: 7vh;
+    padding: 1%;
+    width: 7vh;
+
+    border: blanchedalmond 0.2vh solid;
     background-color: rgb(36, 36, 36);
 }
 
 .key--letter:hover {
     background-color: rgb(0, 163, 204);
     transform: scale(1.05);
+}
+
+@media screen and (max-width: 640px) {
+    .game {
+        padding-top: 15%;
+        width: 95%;
+    }
+
+    .key--letter {
+        padding: 0;
+        width: 5vh;
+        font-size: 5vh;
+    }
+
+    .word {
+        padding-top: 25%;
+        padding-right: 5%;
+    }
+    .hangedman {
+        height: 25vh;
+        width: 35%;
+    }
+    .hangman {
+        height: 25vh;
+        width: 100%;
+    }
+
+    button {
+        padding: 1vh;
+        margin: 0;
+        margin-top: 2vh;
+    }
 }

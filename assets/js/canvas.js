@@ -62,6 +62,5 @@ function drawHangedman(life) {
         ctx.stroke();
 
         document.getElementById("restart").style.display = "block";
-        document.getElementById("hangedman").style.background = "rgb(71, 71, 71) url('https://i.imgur.com/leEvec4.gif') no-repeat top right";
     }
 }

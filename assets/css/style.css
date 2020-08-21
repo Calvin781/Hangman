@@ -71,16 +71,16 @@ span {
     padding-top: 3%;
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
+    width: 95%;
     height: 100%;
     background-color: #131313;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .key--letter {
     text-align: center;
     color: blanchedalmond;
-    font-size: 7vh;
+    font-size: 6vh;
     padding: 1%;
     width: 7vh;
 

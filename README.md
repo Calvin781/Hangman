@@ -1,5 +1,6 @@
 # Hangman Game
-![hangman](https://i.ibb.co/cJztD69/hangman.png)
+![hangman](https://i.ibb.co/cJztD69/hangman.png) 
+ (Mobile version screen)
 ## Built from scratch
 
 ## Technos:

@@ -1,6 +1,6 @@
 # Hangman Game
 
-## Built from sratch
+## Built from scratch
 
 ## Technos:
 

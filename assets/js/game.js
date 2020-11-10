@@ -8,13 +8,22 @@ document.getElementById("restart").addEventListener("click", () => location.relo
 
 let getData = async () => {
 
-    const promise = await fetch('http://api.wordnik.com:80/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&minLength=5&maxLength=15&limit=1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5')
+    const promise = await fetch("https://random-words2.p.rapidapi.com/words?limit=1&lang=en", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "9e08c19790mshadfb1a24187b3ccp169803jsn78520b0fdb2f",
+            "x-rapidapi-host": "random-words2.p.rapidapi.com"
+        }
+    })
+
     const data = await promise.json();
 
-     wordTab = [data[0].word][0].split('');
+    wordTab = data.words[0].split('');
 
 }
 let startGame = async () => {
+
+
 
     await getData();
     let game = new (Game);

@@ -8,12 +8,13 @@ document.getElementById("restart").addEventListener("click", () => location.relo
 
 let getData = async () => {
 
-    const promise = await fetch('https://random-word-api.herokuapp.com/word')
-    const word = await promise.json();
-    wordTab = word[0].split('');
+    const promise = await fetch('http://api.wordnik.com:80/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&minLength=5&maxLength=15&limit=1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5')
+    const data = await promise.json();
+
+     wordTab = [data[0].word][0].split('');
+    console.log(wordTab);
 
 }
-
 let startGame = async () => {
 
     await getData();
@@ -111,10 +112,4 @@ class Game {
 }
 
 startGame();
-
-
-
-
-
-
 

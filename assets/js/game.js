@@ -12,7 +12,6 @@ let getData = async () => {
     const data = await promise.json();
 
      wordTab = [data[0].word][0].split('');
-    console.log(wordTab);
 
 }
 let startGame = async () => {

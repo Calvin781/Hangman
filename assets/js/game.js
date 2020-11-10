@@ -11,7 +11,7 @@ let getData = async () => {
     const promise = await fetch("https://random-words2.p.rapidapi.com/words?limit=1&lang=en", {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "9e08c19790mshadfb1a24187b3ccp169803jsn78520b0fdb2f",
+            "x-rapidapi-key": config.apiKey,
             "x-rapidapi-host": "random-words2.p.rapidapi.com"
         }
     })
